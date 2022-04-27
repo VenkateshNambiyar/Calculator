@@ -3,7 +3,7 @@ package com.calculator;
 import java.util.*;
 
  public class Calculation {
-	public Scanner getValue = new Scanner(System.in);
+	public Scanner scanner = new Scanner(System.in);
 	
 	public double firstNumber;
 	public double secondNumber;
@@ -11,41 +11,39 @@ import java.util.*;
 	public double result;
 	private final int zero = 0;
 	
-	public final void getAdd() {
+	public final void add() {
 		System.out.println("***Addition***");
 		System.out.println("Enter the How many numbers to calculate:: ");
-		storeElements = getValue.nextInt();
+		storeElements = scanner.nextInt();
 		
-		addValidation();
+		check();
 		System.out.println("Addition Result = \t" + result);
 	}
 	
-	public final void addValidation() {
+	public final void check() {
 		System.out.println("Enter the elements");
 		int setOfValues[] = new int [storeElements];
 		
 		for(int i = 0; i < setOfValues.length; i++) {
-			setOfValues[i] = getValue.nextInt();
-		
+			setOfValues[i] = scanner.nextInt();
 		}
 		result = Operators.addition(setOfValues);
-		
 	}
 	
-	public final void getSubtract() {
+	public final void subtract() {
 		result = Operators.subtraction(firstNumber , secondNumber);
 		
 		System.out.println("Subtraction Result = \t" + result);
 	}
 	
-	protected void getMultiply() {
+	protected void multiply() {
 		result = Operators.multiple(firstNumber , secondNumber);
 		
 		System.out.println("Multiplication Result = " + result);
 	}
 	
-	protected void getDivide() {
-		setValidation();
+	protected void divide() {
+		validate();
 		result = Operators.divide(firstNumber , secondNumber);
 		
 		System.out.println("Division Result = \t" + result);
@@ -54,8 +52,7 @@ import java.util.*;
 		System.out.println("Remainder Result = \t" + result);
 	}
 	
-	public final void setValidation() {
-
+	public final void validate() {
 		if ((firstNumber == zero ) && (secondNumber == zero)) {
 			throw new IncorrectDetailsException("Numbers Not Divided By Zero So kindly Enter Valid Number");
 		} else if (secondNumber == zero) {
@@ -65,31 +62,29 @@ import java.util.*;
 		}
 	}
 	
-	public final void setData() {
+	public final void assignData() {
 		System.out.print(" Enter first number : \t");
-		firstNumber = getValue.nextInt();
+		firstNumber = scanner.nextInt();
 		
 		System.out.print("Enter second number: \t");
-		secondNumber = getValue.nextInt();
-	
+		secondNumber = scanner.nextInt();
 	}
 	
 	public void displayFunction() {
-		getAdd();
-		setData();
-		getSubtract();
-		getMultiply();
-		getDivide();
+		add();
+		assignData();
+		subtract();
+		multiply();
+		divide();
 	}		
 	
-	public void setFunctions() {
+	public void verify() {
 		while (true) {
-			
 			try {
 				displayFunction();
 				break;
 			} catch (InputMismatchException e) {
-				getValue.nextLine();
+				scanner.nextLine();
 			}
 		}
 	}
@@ -97,6 +92,6 @@ import java.util.*;
 	public static void main(String[] args) {
 		Calculation show = new Calculation();
 		
-		show.setFunctions();
+		show.verify();
 	}
 }

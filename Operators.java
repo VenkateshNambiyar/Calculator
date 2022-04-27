@@ -1,9 +1,9 @@
 package com.calculator;
 
 public class Operators {
-	static Double operationResult = 0.0;
+	private static Double operationResult = 0.0;
     
-	public static double addition(int... setOfValues) {
+	public static double addition(final int... setOfValues) {
 		
 		for(double additionOperation : setOfValues) {
 			operationResult = operationResult + additionOperation;
@@ -12,25 +12,25 @@ public class Operators {
 		return operationResult;
 	}
 	
-	protected static final double multiple(double firstNumber, double secondNumber) {
+	protected static final double multiple(final double firstNumber, final double secondNumber) {
 		operationResult = firstNumber * secondNumber;
 		
 		return operationResult;
 	}
 	
-	public static final double subtraction(double firstNumber, double secondNumber){
+	public static final double subtraction(final double firstNumber, final double secondNumber){
 		operationResult = firstNumber - secondNumber;
 		
 		return operationResult;
 	}
 	
-	protected static synchronized double divide(double firstNumber, double secondNumber){
+	protected static synchronized double divide(final double firstNumber, final double secondNumber){
 		operationResult = firstNumber / secondNumber;
 		
 		return operationResult;
 	}
 	
-	public static final synchronized double remainder(double firstNumber, double secondNumber){
+	public static final synchronized double remainder(final double firstNumber, final double secondNumber){
 		operationResult = firstNumber % secondNumber;
 		
 		return operationResult;
