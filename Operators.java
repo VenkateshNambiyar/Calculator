@@ -4,10 +4,8 @@ public class Operators {
 	private static Double operationResult = 0.0;
     
 	public static double addition(final int... setOfValues) {
-		
 		for(double additionOperation : setOfValues) {
-			operationResult = operationResult + additionOperation;
-			
+			operationResult = operationResult + additionOperation;	
 		}
 		return operationResult;
 	}

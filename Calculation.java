@@ -3,24 +3,24 @@ package com.calculator;
 import java.util.*;
 
  public class Calculation {
-	public Scanner scanner = new Scanner(System.in);
+	private Scanner scanner = new Scanner(System.in);
 	
-	public double firstNumber;
-	public double secondNumber;
-	public int storeElements;
-	public double result;
+	private double firstNumber;
+	private double secondNumber;
+	private int storeElements;
+	private double result;
 	private final int zero = 0;
 	
-	public final void add() {
+	private final void add() {
 		System.out.println("***Addition***");
 		System.out.println("Enter the How many numbers to calculate:: ");
 		storeElements = scanner.nextInt();
 		
-		check();
+		validateAdd();
 		System.out.println("Addition Result = \t" + result);
 	}
 	
-	public final void check() {
+	private final void validateAdd() {
 		System.out.println("Enter the elements");
 		int setOfValues[] = new int [storeElements];
 		
@@ -30,39 +30,39 @@ import java.util.*;
 		result = Operators.addition(setOfValues);
 	}
 	
-	public final void subtract() {
+	private final void subtract() {
 		result = Operators.subtraction(firstNumber , secondNumber);
 		
 		System.out.println("Subtraction Result = \t" + result);
 	}
 	
-	protected void multiply() {
+	private final void multiply() {
 		result = Operators.multiple(firstNumber , secondNumber);
 		
 		System.out.println("Multiplication Result = " + result);
 	}
 	
-	protected void divide() {
-		validate();
+	private final void divide() {
+		validateDivide();
 		result = Operators.divide(firstNumber , secondNumber);
 		
-		System.out.println("Division Result = \t" + result);
+		System.out.print("Division Result = " + result);
 		result = Operators.remainder(firstNumber , secondNumber);
 		
-		System.out.println("Remainder Result = \t" + result);
+		System.out.print("\t Remainder Result = " + result);
 	}
 	
-	public final void validate() {
+	private final void validateDivide() {
 		if ((firstNumber == zero ) && (secondNumber == zero)) {
 			throw new IncorrectDetailsException("Numbers Not Divided By Zero So kindly Enter Valid Number");
 		} else if (secondNumber == zero) {
 			throw new IncorrectDetailsException("Numbers Not Divided By Zero So kindly Enter Valid Number");
 		} else {
-			System.out.println("Error");
+			System.out.print("Division Result :\t");
 		}
 	}
 	
-	public final void assignData() {
+	private final void assignData() {
 		System.out.print(" Enter first number : \t");
 		firstNumber = scanner.nextInt();
 		
@@ -70,7 +70,7 @@ import java.util.*;
 		secondNumber = scanner.nextInt();
 	}
 	
-	public void displayFunction() {
+	private void displayFunction() {
 		add();
 		assignData();
 		subtract();
@@ -78,7 +78,7 @@ import java.util.*;
 		divide();
 	}		
 	
-	public void verify() {
+	private final void checkException() {
 		while (true) {
 			try {
 				displayFunction();
@@ -90,8 +90,8 @@ import java.util.*;
 	}
 	
 	public static void main(String[] args) {
-		Calculation show = new Calculation();
+		Calculation display = new Calculation();
 		
-		show.verify();
+		display.checkException();
 	}
 }
