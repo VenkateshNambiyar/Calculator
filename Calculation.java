@@ -3,7 +3,7 @@ package com.calculator;
 import java.util.*;
 
  public class Calculation {
-	private Scanner scanner = new Scanner(System.in);
+	private final Scanner scanner = new Scanner(System.in);
 	
 	private double firstNumber;
 	private double secondNumber;
